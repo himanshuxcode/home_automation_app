@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToNext() {
     Future.delayed(const Duration(seconds: 2), () {
-      if(mounted)context.go(MyAppRouter.home);
+      if(mounted)context.go(MyAppRouter.signup);
     });
   }
 

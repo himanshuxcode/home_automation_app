@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../routes.dart';
 import '../widgets/custom_text_field.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -39,15 +41,14 @@ class _OtpScreenState extends State<OtpScreen> {
                   horizontal: 20.0,
                 ),
                 child:  CustomTextField(
-                  hintText: 'Phone Number',
+                  hintText: 'Otp',
                   controller: TextEditingController(),
-                  isPrefix: true,
-                  prefixIcon: Icons.phone,
+                  isPrefix: false,
                   maxLength: 10,
                   textInputType: TextInputType.phone,
                   validator: (val){
                     if(val.length != 10){
-                      return "Invalid Phone Number";
+                      return "Invalid Otp";
                     }
                   },
                 ),
@@ -69,7 +70,9 @@ class _OtpScreenState extends State<OtpScreen> {
                     foregroundColor:
                     WidgetStateProperty.all(const Color(0xFFFFFFFF)),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    if(mounted)context.go(MyAppRouter.home);
+                  },
                   child: const Text(
                     "Submit",
                     style: TextStyle(

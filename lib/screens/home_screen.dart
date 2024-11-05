@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:has_flutter/screens/notification_screen.dart';
 import 'package:has_flutter/screens/room_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationScreen(),
+                ),
+              );
+            },
             icon: Icon(Icons.notifications_outlined),
           ),
         ],
@@ -34,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
+            mainAxisSpacing: 12.0,
+            mainAxisExtent: 150.0,
           ),
           children: [
             _roomCard("Living room", "assets/images/living.jpg"),
@@ -61,18 +71,20 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 120,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(10.0),
-              ),
-              image: DecorationImage(
-                image: AssetImage(
-                  img,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(10.0),
                 ),
-                fit: BoxFit.cover,
+                image: DecorationImage(
+                  image: AssetImage(
+                    img,
+                  ),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
